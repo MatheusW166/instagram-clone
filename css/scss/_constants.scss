@@ -1,0 +1,36 @@
+// Colors
+$background-color-primary: #fff;
+$background-color-secondary: #fafafa;
+$text-color-primary: #262626;
+$text-color-secondary: #8e8e8e;
+$text-color-tertiary: #c7c7c7;
+$accent-color: #0095f6;
+$gradient-green-1: #78de45;
+$gradient-green-2: #58c322;
+$gradient-green-3: #37a600;
+$gradient-lavander: #d300c5;
+$gradient-orange: #ff7a00;
+$gradient-pink: #ff0169;
+$gradient-purple: #7638fa;
+$gradient-yellow: #ffd600;
+$hover-overlay: rgba(0, 0, 0, 0.02);
+$ig-link: #00376b;
+$ig-inactive-blue: #b3dbff;
+
+// Typography
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-size-md: 16px;
+$font-size-sm: 14px;
+$font-size-xs: 12px;
+$font-size-xxs: 10px;
+
+// Borders
+$stroke-color-primary: rgb(219, 219, 219);
+$stroke-color-secondary: rgb(219, 219, 219, 0.4);
+$gray-smooth-border: 1px solid $stroke-color-primary;
+$radius-default: 8px;
+
+// Layout
+$navbar-min-width: 335px;
+$footer-min-width: 320px;

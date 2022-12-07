@@ -1,0 +1,103 @@
+footer {
+    margin-top: 30px;
+    width: $footer-min-width;
+}
+
+.change-account {
+    @include flex-container(row);
+    @include text($font-size: "sm", $color: "secondary");
+    padding: 16px 0 10px 0;
+    align-items: center;
+    height: fit-content;
+
+    .story-user-photo {
+        @include story-style;
+        margin-right: 12px;
+    }
+
+    a {
+        @include link-style;
+    }
+
+    p {
+        margin-top: 4px;
+    }
+
+    button {
+        margin-left: auto;
+        @include primary-button($font-size: "xs");
+    }
+}
+
+.suggestions {
+    .see-all {
+        @include flex-container(row);
+        padding: 4px 0;
+        justify-content: space-between;
+
+        p {
+            @include text($font-weight: "semibold", $color: "secondary");
+        }
+        button {
+            @include primary-button($font-size: "xs");
+            color: $text-color-primary;
+        }
+    }
+
+    .suggested-accounts {
+        padding: 8px 0;
+        margin-bottom: 12px;
+
+        .suggested-account {
+            padding: 8px 0;
+            @include flex-container(row);
+            align-items: center;
+
+            .user-photo {
+                @include photo-avatar("sm");
+                margin-right: 12px;
+                img {
+                    @include photo-avatar("sm");
+                }
+            }
+
+            a {
+                @include link-style($font-size: "sm");
+            }
+
+            p {
+                @include text($font-size: "xs", $color: "secondary");
+            }
+
+            button {
+                @include primary-button($font-size: "xs");
+                margin-left: auto;
+                &::after {
+                    content: "Seguir";
+                }
+            }
+        }
+    }
+}
+
+.copyright {
+    @include text($color: "tertiary", $font-size: "xs");
+    .options {
+        margin-bottom: 20px;
+        @include flex-container(row);
+        flex-wrap: wrap;
+
+        a {
+            @include link-style($font-weight: "normal");
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        a:not(a:last-child)::after {
+            content: "\00B7";
+            margin: 0 4px;
+            text-decoration: none;
+        }
+    }
+}

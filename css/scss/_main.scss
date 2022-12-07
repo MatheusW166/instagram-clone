@@ -1,0 +1,16 @@
+$main-padding: 14px 0 0 0;
+$main-min-height: 100vh;
+$main-width: 100%;
+$main-gap: 16px;
+
+.main-content {
+    @include flex-container(row);
+    justify-content: center;
+    gap: 32px;
+}
+
+main {
+    @include flex-container(column);
+    padding: $main-padding;
+    gap: $main-gap;
+}

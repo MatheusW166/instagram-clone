@@ -1,0 +1,161 @@
+$section-posts-width: 470px;
+$section-posts-gap: 12px;
+
+section.posts {
+    width: $section-posts-width;
+    @include flex-container(column);
+    gap: $section-posts-gap;
+}
+
+article.post {
+    width: 100%;
+    @include flex-container(column);
+
+    &:last-child {
+        margin-bottom: $section-posts-gap;
+    }
+
+    a {
+        @include clickable-element;
+        @include link-style;
+    }
+
+    .user-information {
+        @include flex-container(row);
+        align-items: center;
+        gap: 5px;
+        padding: 8px 4px 8px 12px;
+        background-color: $background-color-primary;
+        border: $gray-smooth-border;
+        border-bottom: none;
+        border-top-left-radius: $radius-default;
+        border-top-right-radius: $radius-default;
+
+        .profile-name {
+            @include link-style($font-size: "sm");
+        }
+
+        .user-photo {
+            @include story-style($size: "sm");
+            transform: translateX(-5px);
+            @include clickable-element;
+        }
+
+        .more-options-btn {
+            @include clickable-element;
+            @include grid-centering;
+            margin-left: auto;
+            padding: 8px;
+        }
+    }
+
+    img.post-image {
+        @include img-fit-width;
+    }
+
+    .post-bottom {
+        @include flex-container(column);
+        background-color: $background-color-primary;
+        border-bottom-left-radius: $radius-default;
+        border-bottom-right-radius: $radius-default;
+        border: $gray-smooth-border;
+        border-top: none;
+        @include text();
+
+        .action-buttons {
+            @include flex-container(row);
+            padding: 0 12px 6px 12px;
+            margin-top: 4px;
+
+            .button {
+                @include clickable-element;
+                padding: 8px;
+                &:not(.save) {
+                    transform: translateX(-8px);
+                }
+                &.save {
+                    margin-left: auto;
+                    transform: translate(10px);
+                }
+            }
+        }
+
+        .liked-by {
+            padding: 0 12px;
+            margin-bottom: 8px;
+        }
+
+        .caption {
+            padding: 0 12px;
+            div.hashtags > a {
+                @include hashtag-style;
+                font-weight: $font-weight-regular;
+            }
+
+            .profile-name {
+                display: inline-block;
+                margin-right: 8px;
+            }
+        }
+
+        .read-comments {
+            @include clickable-element;
+            &.closed {
+                padding: 8px 12px;
+                margin-bottom: 8px;
+                @include text($color: "secondary");
+            }
+        }
+
+        .posted-at {
+            padding-left: 12px;
+            margin-bottom: 12px;
+            @include text($color: "secondary", $font-size: "xxs");
+
+            .translate {
+                @include link-style($font-size: "xs", $color: "primary");
+                display: inline-block;
+                margin-left: 8px;
+            }
+        }
+
+        .publish-comment {
+            @include flex-container(row);
+            border-top: 1px solid $stroke-color-secondary;
+
+            align-items: center;
+            padding: 4px 16px 4px 12px;
+
+            .emoji-icon {
+                @include clickable-element;
+                padding: 8px 12px 8px 0;
+            }
+
+            form {
+                flex-grow: 1;
+                height: 100%;
+                @include flex-container(row);
+                textarea {
+                    @include text($font-size: "sm");
+                    padding: 12px 0;
+                    flex-grow: 1;
+                    outline: none;
+                    border: none;
+                    resize: none;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    &::placeholder {
+                        @include text($font-size: inherit, $color: "secondary");
+                    }
+                }
+
+                .publish-comment-btn {
+                    @include primary-button;
+                }
+            }
+        }
+    }
+}

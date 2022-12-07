@@ -1,0 +1,131 @@
+@mixin flex-container($direction: column) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin clickable-element($opacity-change: true) {
+    cursor: pointer;
+    pointer-events: all;
+    user-select: none;
+    text-decoration: none;
+    color: inherit;
+    &:active {
+        @if $opacity-change {
+            opacity: 0.5;
+        }
+        @content;
+    }
+}
+
+@mixin full-viewsize {
+    min-height: 100vh;
+    width: 100%;
+}
+
+@mixin grid-centering {
+    display: grid;
+    place-content: center;
+}
+
+@mixin absolute-centering {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin circle-absolute-centered {
+    position: absolute;
+    @include absolute-centering;
+    border-radius: 100%;
+}
+
+@mixin photo-avatar($size: "sm") {
+    $avatar-sizes: (
+        "sm": 34px,
+        "md": 56px,
+    );
+    border-radius: 100%;
+    width: map-get($map: $avatar-sizes, $key: $size);
+    height: map-get($map: $avatar-sizes, $key: $size);
+}
+
+@mixin story-style($size: "md") {
+    $ring-sizes: (
+        "sm": 42px,
+        "md": 64px,
+    );
+
+    position: relative;
+    height: map-get($map: $ring-sizes, $key: $size);
+    width: map-get($map: $ring-sizes, $key: $size);
+
+    img {
+        @include circle-absolute-centered;
+        @include photo-avatar($size);
+    }
+
+    object.instagram-ring {
+        @include circle-absolute-centered;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@mixin img-fit-width {
+    img {
+        width: 100%;
+    }
+}
+
+@mixin link-style($font-weight: "semibold", $color: inherit, $font-size: inherit) {
+    @include text($font-weight: $font-weight, $font-size: $font-size, $color: $color);
+    text-decoration: none;
+}
+
+@mixin hashtag-style {
+    @include link-style;
+    font-weight: $font-weight-regular;
+    color: $ig-link;
+}
+
+@mixin primary-button($font-weight: "semibold", $font-size: "sm") {
+    @include text($font-weight: $font-weight, $font-size: $font-size);
+    color: $accent-color;
+    background: none;
+    border: none;
+
+    &.active {
+        opacity: 1;
+    }
+
+    &.inactive {
+        opacity: 0.35;
+    }
+}
+
+@mixin text($font-weight: "normal", $font-size: "sm", $color: "primary") {
+    $font-sizes: (
+        "md": $font-size-md,
+        "sm": $font-size-sm,
+        "xs": $font-size-xs,
+        "xxs": $font-size-xxs,
+        inherit: inherit,
+    );
+
+    $font-colors: (
+        "primary": $text-color-primary,
+        "secondary": $text-color-secondary,
+        "tertiary": $text-color-tertiary,
+        inherit: inherit,
+    );
+
+    $font-weights: (
+        "normal": $font-weight-regular,
+        "semibold": $font-weight-semibold,
+        inherit: inherit,
+    );
+
+    color: map-get($map: $font-colors, $key: $color);
+    font-size: map-get($map: $font-sizes, $key: $font-size);
+    font-weight: map-get($map: $font-weights, $key: $font-weight);
+}
